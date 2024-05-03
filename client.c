@@ -56,7 +56,7 @@ int main()
 	/* fin */
 	
 	close( sock_S );
-	close( sock_C );
+	close( sock_C ); 
 	exit(EXIT_SUCCESS); 
 	
 }
