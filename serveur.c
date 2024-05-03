@@ -46,7 +46,7 @@ int main()
 		printf("%s \n", message);
 		
 		/* re-emission datagramme vers client */
-		sendto(sock_S, "putain de sainte simoniac", 25 * sizeof(char), 0, (struct sockaddr*) &sa_C, taille_sa_C);
+		sendto(sock_S, message, 25 * sizeof(char), 0, (struct sockaddr*) &sa_C, taille_sa_C);
 	}
 
 	/* fin */
