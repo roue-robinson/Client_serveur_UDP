@@ -15,7 +15,9 @@
 int main()
 {
 	int sock_C;
+	int sock_S;
 	
+	struct sockaddr_in sa_C;
 	struct sockaddr_in sa_S;
 	
 	unsigned int taille_sa_S;
@@ -25,15 +27,24 @@ int main()
 	/* creation socket Client */
 	sock_C = socket(PF_INET, SOCK_DGRAM, 0);
 	perror("socket");
+	/* creation socket Serveur */
+	sock_C = socket(PF_INET, SOCK_DGRAM, 0);
+	perror("socket");
 	
 	/* @IP et n° port Serveur */
 	bzero((char*) &sa_S, sizeof(sa_S));
 	sa_S.sin_family      = AF_INET;
 	sa_S.sin_addr.s_addr = inet_addr( IP_addr_S );
 	sa_S.sin_port        = htons( UDP_port_S );
+	/* @IP et n° port Client */
+	bzero((char*) &sa_S, sizeof(sa_S));
+	sa_C.sin_family      = AF_INET;
+	sa_C.sin_addr.s_addr = inet_addr( IP_addr_S );
+	sa_C.sin_port        = htons( UDP_port_S );
 
 	/* emission vers le serveur (a partir du client) */
 	taille_sa_S = sizeof( struct sockaddr );
+	taille_sa_C = sizeof( struct sockaddr );
 	
 	sendto(sock_C, "salut", 10 * sizeof(char), 0, (struct sockaddr*) &sa_S, taille_sa_S);
 	
@@ -44,6 +55,7 @@ int main()
 	
 	/* fin */
 	
+	close( sock_S );
 	close( sock_C );
 	exit(EXIT_SUCCESS);
 	
