@@ -57,7 +57,7 @@ int main()
 	
 	close( sock_S );
 	close( sock_C );
-	exit(EXIT_SUCCESS);
+	exit(EXIT_SUCCESS); 
 	
 }
 

@@ -10,6 +10,7 @@
 #include <stdio.h>
 
 #define UDP_port_S 8000
+#define IP_addr_S "127.0.0.1"
 
 int main()
 {
